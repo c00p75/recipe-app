@@ -3,23 +3,19 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
+  username: c00p75
+  password: 1234
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5433
 
 development:
   <<: *default
   database: recipe_app_development
-  username: postgres
-  password: <%= ENV['DB_password'] %>
-
   
 test:
   <<: *default
   database: recipe_app_test
-  username: postgres
-  password: <%= ENV['DB_password'] %>
 
 production:
   <<: *default
   database: recipe_app_production
-  username: recipe_app
-  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>

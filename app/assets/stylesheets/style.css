@@ -1,0 +1,83 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up {
+  font-size: 2em;
+  text-align: center;
+  margin: 1em 0 2em 0;
+}
+
+.registeration-form {
+  flex-direction: column;
+  gap: 2em;
+}
+
+.field {
+  min-width: 300px;
+}
+
+.registeration-form input {
+  border: 0;
+  border-bottom: 2px solid black;
+  padding: 1em;
+  outline: none;
+  box-shadow: none;
+  width: 100%;
+}
+
+.registeration-form input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.registeration-form .actions input,
+.shared-links a {
+  cursor: pointer;
+  background: black;
+  color: white;
+  font-weight: 400;
+  box-shadow: none;
+  border-radius: 5px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me :last-child {
+  flex: 5;
+}
+
+.remember-me :nth-child(2) {
+  flex: 1;
+}
+
+.shared-links {
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.shared-links a {
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border: 1px solid black;
+  background: none;
+  color: black;
+}
+
+.hr {
+  width: 400px;
+  border-top: 2px solid gray;
+  margin: 2em auto;
+}
