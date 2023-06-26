@@ -34,4 +34,4 @@
 node_modules/
 
 #Ignore database.yml file
-# /config/database.yml
+/config/database.yml
