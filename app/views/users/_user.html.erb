@@ -1,7 +1,11 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
+<div id="<%= dom_id user %>" class="col">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body text-center">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><h5 class="card-title text-center fw-bold"><%= user.name %></h5></li>
+        <li class="list-group-item"><%= link_to "View Foods", user_foods_path(user) %></li>
+        <li class="list-group-item"><%= link_to "View Recipes", user_recipes_path(user) %></li>
+      </ul>
+    </div>
+  </div>
 </div>

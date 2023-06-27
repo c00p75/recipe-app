@@ -1,12 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
+<div class="flex-center-col recipes-container">
+  <h1 class=text-center>Users</h1>
 
-<div id="users">
-  <% @users.each do |user| %>
-     food_list
-    <%= render user %>
-  <% end %>
+  <div class="container">
+    <div id="users" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+      <% @users.each do |user| %>
+        <%= render user %>
+      <% end %>
+    </div>
 </div>
-
-
+</div>

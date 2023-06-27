@@ -2,8 +2,8 @@
 
 
 <div class="flex-center-col recipes-container">
-  <div style="margin-top: 1em; position: relative;">
-    <h1 style="margin-top: 1em;">Recipes</h1>
+  <div style="position: relative;">
+    <h1>Recipes</h1>
     <% if @user === current_user %>
       <%= link_to "Add recipe", new_user_recipe_path(), class: "add-recipe" %>
     <%end%>

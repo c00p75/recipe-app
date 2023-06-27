@@ -1,3 +1,7 @@
+a {
+  text-decoration: none !important;
+}
+
 .flex {
   display: flex;
 }
@@ -21,20 +25,18 @@
 .back a {
   background-color: black;
   color: white !important;
-  text-decoration: none;
   padding: 0.5em;
 }
 
 .recipes-container {
   position: absolute;
-  top: 0;
+  top: 2em;
   left: 0;
   right: 0;
   margin: auto;
 }
 
 #recipes a {
-  text-decoration: none;
   width: 600px;
 }
 
@@ -89,7 +91,7 @@
 
 .add-recipe {
   position: absolute;
-  top: 2.25em;
+  top: 0.25em;
   left: 120%;
   width: max-content;
   padding: 0.5em 1em;
@@ -99,7 +101,6 @@
   font-weight: 500;
   box-shadow: none;
   border-radius: 5px;
-  text-decoration: none;
 }
 
 .recipe-form-container {
