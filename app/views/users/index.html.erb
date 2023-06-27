@@ -4,8 +4,9 @@
 
 <div id="users">
   <% @users.each do |user| %>
-    <p>
-      <%= link_to user.name, user %>
-    </p>
+     food_list
+    <%= render user %>
   <% end %>
 </div>
+
+
