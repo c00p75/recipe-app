@@ -1,0 +1,24 @@
+<div class='container'>
+  <table class="table table-striped table-bordered">
+    <thead class='table-dark'>
+      <tr>
+        <th><%= 'Food' %></th>
+        <th><%= 'Measurement unit'%></th>
+        <th><%= 'Unit price' %></th>
+        <th><%= 'Quantity' %></th>
+        <th><%= 'Actions' %></th>
+      </tr>
+    </thead>
+    <tr>
+    <% @foods.each do |food| %>
+      <td><%= food.name%></td>
+      <td><%= food.measurement_unit%></td>
+      <td><%= food.price%></td>
+      <td><%= food.quantity%></td>
+      <td><%= link_to 'Delete', user_food_path(@user, food) %></td>
+      
+    </tr>
+    <%end%>
+  </table>
+</div>
+ 
