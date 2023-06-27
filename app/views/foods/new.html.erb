@@ -1,0 +1,13 @@
+<%= form_with(model: @food, url: user_foods_path) do |form| %>
+  <div class='d-flex flex-column'>
+    <%= form.label :Name %>
+    <%= form.text_field :name %>
+    <%= form.label :'Measurement unit' %>
+    <%= form.text_field :measurement_unit %>
+    <%= form.label :Price %>
+    <%= form.text_field :price %>
+    <%= form.label :Quantity %>
+    <%= form.text_field :quantity %>
+    <%= form.submit 'Create Food' %>
+  </div>
+<% end %>
