@@ -1,13 +1,30 @@
-<%= form_with(model: @food, url: user_foods_path) do |form| %>
-  <div class='d-flex flex-column'>
-    <%= form.label :Name %>
-    <%= form.text_field :name %>
-    <%= form.label :'Measurement unit' %>
-    <%= form.text_field :measurement_unit %>
-    <%= form.label :Price %>
-    <%= form.text_field :price %>
-    <%= form.label :Quantity %>
-    <%= form.text_field :quantity %>
-    <%= form.submit 'Create Food' %>
+<section>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-container">
+        <h2 class="form-title">Add New Food</h2>
+        <%= form_with(model: @food, url: user_foods_path) do |form| %>
+          <div class="mb-3">
+            <%= form.label :name, class: "form-label" %>
+            <%= form.text_field :name, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :'Measurement unit', class: "form-label" %>
+            <%= form.text_field :measurement_unit, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :'Price', class: "form-label" %>
+            <%= form.text_field :price, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :'Quantity', class: "form-label" %>
+            <%= form.text_field :quantity, class: "form-control" %>
+          </div>
+          <div class="mb-3">
+            <%= form.submit "Create Food", class: "btn btn-secondary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</section>
