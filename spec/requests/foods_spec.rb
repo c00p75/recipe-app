@@ -17,12 +17,12 @@ RSpec.describe 'Posts', type: :request do
     it 'renders foods/index template' do
       expect(response).to render_template(:index)
     end
-    it "response body should include Add Food link" do
+    it 'response body should include Add Food link' do
       get user_foods_path(@user)
-      expect(response.body).to include("div")  
+      expect(response.body).to include('div')
     end
-    it "response body should include table" do
-      expect(response.body).to include ('table')
+    it 'response body should include table' do
+      expect(response.body).to include('table')
     end
   end
   describe 'GET /users/:user_id/foods/new' do
@@ -35,29 +35,29 @@ RSpec.describe 'Posts', type: :request do
     it 'renders foods/new template' do
       expect(response).to render_template(:new)
     end
-    it "response body should include section" do
-      expect(response.body).to include ('section')
+    it 'response body should include section' do
+      expect(response.body).to include('section')
     end
   end
 
   describe 'POST /users/:user_id/foods/create' do
     before(:all) do
       @user = User.first
-      @valid_params = {food: { name: 'Apple', measurement_unit: 'Piece', price: '$1.99', quantity: 5, user: @user}}
+      @valid_params = { food: { name: 'Apple', measurement_unit: 'Piece', price: '$1.99', quantity: 5, user: @user } }
     end
     context 'with invalid parameters' do
       let(:invalid_params) { { food: { name: nil, measurement_unit: 'Piece', price: 1.99, quantity: 5 } } }
-    
+
       it 'does not create a new food' do
-        expect {
+        expect do
           post user_foods_path(@user), params: invalid_params
-        }.not_to change(Food, :count)
+        end.not_to change(Food, :count)
       end
-    
+
       it 'renders the new template' do
         post user_foods_path(@user), params: invalid_params
         expect(response).to render_template(:new)
       end
-    end    
+    end
   end
 end

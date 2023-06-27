@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
     if @food.save
       redirect_to user_foods_path(@user), notice: 'Food creates successfully'
     else
-      flash.now[:alert]='Unable to create'
+      flash.now[:alert] = 'Unable to create'
       render :new
     end
   end

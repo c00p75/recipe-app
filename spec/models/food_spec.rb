@@ -35,5 +35,5 @@ RSpec.describe Food, type: :model do
   it 'should quantity be greater than or equal to 1' do
     @food.quantity = -1
     expect(@food).to_not be_valid
-  end  
+  end
 end
