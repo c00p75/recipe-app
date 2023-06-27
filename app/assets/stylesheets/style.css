@@ -48,6 +48,7 @@
   font-weight: 400;
   box-shadow: none;
   border-radius: 5px;
+  padding: 0.5em 1em !important;
 }
 
 .remember-me {
@@ -65,7 +66,10 @@
 
 .shared-links {
   gap: 1em;
+  width: 400px;
+  margin: auto;
   margin-bottom: 1em;
+  flex-wrap: wrap;
 }
 
 .shared-links a {
@@ -77,7 +81,7 @@
 }
 
 .hr {
-  width: 400px;
+  width: 300px;
   border-top: 2px solid gray;
   margin: 2em auto;
 }

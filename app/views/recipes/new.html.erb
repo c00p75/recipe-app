@@ -1,0 +1,11 @@
+<div class="recipe-form-container">
+
+  <h1 class="heading">New recipe</h1>
+
+  <%= render "form", recipe: @recipe %>
+
+  <div class="back flex-center mt-4">
+    <%= link_to "Back to recipes", user_recipes_path %>
+  </div>
+</div>
+
