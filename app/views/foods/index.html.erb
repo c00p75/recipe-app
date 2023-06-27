@@ -15,7 +15,7 @@
       <td><%= food.measurement_unit%></td>
       <td><%= food.price%></td>
       <td><%= food.quantity%></td>
-      <td><%= link_to 'Delete', user_food_path(@user, food) %></td>
+      <td><%= button_to 'Delete', user_food_path(@user, food), method: :delete, class: "btn btn-outline-danger border-0" %></td>
       
     </tr>
     <%end%>
