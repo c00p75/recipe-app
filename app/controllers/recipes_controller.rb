@@ -3,7 +3,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @user = User.find(params[:user_id])
+    @recipes = @user.recipes
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -12,26 +13,21 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
+    @user = current_user
     @recipe = Recipe.new
-  end
-
-  # GET /recipes/1/edit
-  def edit
   end
 
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @recipe.save
+    #     redirect_to recipe_url(@recipe), notice: "Recipe was successfully created."
+    #   else
+    #     render :new, status: :unprocessable_entity 
+    #   end
+    # end
   end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json

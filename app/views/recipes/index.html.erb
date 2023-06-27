@@ -1,15 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 
-<div class="flex-center-col">
+<div class="flex-center-col recipes-container">
   <div style="margin-top: 1em; position: relative;">
     <h1 style="margin-top: 1em;">Recipes</h1>
-    <%= link_to "Add recipe", new_recipe_path, class: "add-recipe" %>
+    <%= link_to "Add recipe", new_user_recipe_path, class: "add-recipe" %>
   </div>
 
   <div id="recipes">
     <% @recipes.each do |recipe| %>
-      <%= link_to recipe, class: "flex-center" do %>
+      <%= link_to user_recipe_path(recipe.user, recipe), class: "flex-center" do %>
         <%= render partial: 'recipe_card', locals: { recipe: } %>
       <% end %>
     <% end %>

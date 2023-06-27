@@ -12,8 +12,25 @@
 
 .heading {
   font-size: 2em;
+  color: white;
   text-align: center;
   margin: 1em  0;
+  font-weight: 700;
+}
+
+.back a {
+  background-color: black;
+  color: white !important;
+  text-decoration: none;
+  padding: 0.5em;
+}
+
+.recipes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 #recipes a {
@@ -47,6 +64,7 @@
 }
 
 .desc {
+  width: 400px;
   flex: 2;
   margin-left: 5em;
   padding: 0 1em;
@@ -84,18 +102,33 @@
   text-decoration: none;
 }
 
-.recipe-form {
-  width: 500px;
-  padding: 1em 3em;
-  margin: auto;
+.recipe-form-container {
+  position: absolute;
+  width: 600px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 1em auto;
   background-color: mediumslateblue;
   border-radius: 5px;
+  padding: 2em;
+}
+
+.recipe-form {
+  padding: 1em 3em;
+  margin: auto;
 }
 
 .recipe-form input {
-  width: 400px !important;
   border: 0 !important;
-  border-radius: 5px;
+}
+
+.recipe-form .row {
+  width: 100%;
+}
+
+.recipe-form .row .col input {
+  width: 100% !important;
 }
 
 .recipe-form textarea {
