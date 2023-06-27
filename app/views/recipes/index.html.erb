@@ -11,9 +11,10 @@
 
   <div id="recipes">
     <% @recipes.each do |recipe| %>
-      <%= link_to user_recipe_path(recipe.user, recipe), class: "flex-center" do %>
-        <%= render partial: 'recipe_card', locals: { recipe: } %>
-      <% end %>
+      <%= render partial: 'recipe_card', locals: { recipe: } %>
     <% end %>
   </div>
+  <% if @recipes.empty? %>
+     <h2>No Recipes Added</h2>
+    <%end%>
 </div>

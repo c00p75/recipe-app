@@ -1,12 +1,27 @@
-<div id="<%= dom_id recipe %>" class="recipe flex-center pattern">
-  <div class="flex-center">
-    <h2>
-      <%= recipe.name %>
-    </h2>
-  </div>
+<div style="position: relative">
 
-  <div class="desc flex-center">
-    <h3>Description</h3>
-    <p><%= recipe.description %></p>
-  </div>
+  <% if @user === current_user %>
+    <button class="dropdown-toggle delete" type="button" data-bs-toggle="dropdown" aria-expanded="false">   
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="black" d="M156 128a28 28 0 1 1-28-28a28 28 0 0 1 28 28Zm-28-52a28 28 0 1 0-28-28a28 28 0 0 0 28 28Zm0 104a28 28 0 1 0 28 28a28 28 0 0 0-28-28Z"></path></svg>
+    </button>
+    <ul class="dropdown-menu p-0">
+      <li>
+        <%= button_to "Delete", user_recipe_path(recipe.user, recipe), method: :delete, class: "dropdown-item del-dropdown text-center p-2" %>
+      </li>
+    </ul>
+  <%end%>
+
+  <%= link_to user_recipe_path(recipe.user, recipe), class: "flex-center" do %>
+    <div id="<%= dom_id recipe %>" class="recipe flex-center pattern">
+      <div class="flex-center">
+        <h2>
+          <%= recipe.name %>
+        </h2>
+      </div>
+
+      <div class="desc flex-center">
+        <h3>Description</h3>
+        <p><%= recipe.description %></p>
+      </div>
+  <%end%>
 </div>

@@ -37,11 +37,12 @@ a {
 }
 
 #recipes a {
+  height: 100%;
   width: 600px;
 }
 
 .recipe {
-  height: 10em !important;
+  height: 11em !important;
   width: inherit;
   box-shadow: 0 0 5px slategray;
   color: black;
@@ -66,6 +67,7 @@ a {
 }
 
 .desc {
+  color: black !important;
   width: 400px;
   flex: 2;
   margin-left: 5em;
@@ -103,6 +105,10 @@ a {
   border-radius: 5px;
 }
 
+.add-recipe:hover {
+  color: navy;
+}
+
 .recipe-form-container {
   position: absolute;
   width: 600px;
@@ -135,4 +141,23 @@ a {
 .recipe-form textarea {
   width: 100%;
   padding: 1em;
+}
+
+.delete {
+  z-index: 1;
+  position: absolute;
+  padding-right: 0.5em;
+  border: 0;
+  background: none;
+  top: 0;
+  right: 0;
+}
+
+.delete::after {
+  display: none;
+}
+
+.del-dropdown {
+  width: 100% !important;
+  height: 100%;
 }
