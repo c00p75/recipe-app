@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'recipes/new', type: :view do
   before(:example) do
-    @user = User.create(name: "Cook", email: "cook007@masterchef.com", password: "123456", confirmed_at: Time.now)
+    @user = User.create(name: 'Cook', email: 'cook007@masterchef.com', password: '123456', confirmed_at: Time.now)
     sign_in @user
 
     assign(:recipe, Recipe.new) # Assign a new recipe object to the view

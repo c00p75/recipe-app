@@ -4,7 +4,7 @@ RSpec.describe 'users/:id/recipes', type: :request do
   include Devise::Test::IntegrationHelpers
 
   before(:all) do
-    @user = User.create(name: "Cook", email: "cook5@masterchef.com", password: "123456", confirmed_at: Time.now)
+    @user = User.create(name: 'Cook', email: 'cook5@masterchef.com', password: '123456', confirmed_at: Time.now)
     @recipe = Recipe.create(user: @user, name: 'recipe 1', description: 'description', public: true)
   end
 
@@ -33,12 +33,12 @@ RSpec.describe 'users/:id/recipes', type: :request do
     end
 
     it 'creates a new recipe' do
-      expect {
+      expect do
         post user_recipes_path(@user),
              params: { recipe: { user_id: @user.id, name: 'recipe 2', description: 'description', public: true } }
-      }.to change(Recipe, :count).by(1)
+      end.to change(Recipe, :count).by(1)
     end
-  
+
     # it 'redirects to the created recipe' do
     #   post user_recipes_path(@user),
     #        params: { recipe: { user_id: @user.id, name: 'recipe 3', description: 'description', public: true } }
@@ -70,16 +70,16 @@ RSpec.describe 'users/:id/recipes', type: :request do
       sign_in @user
       @recipe = Recipe.create(user: @user, name: 'recipe 5', description: 'description', public: true)
     end
-  
+
     it 'should destroy the recipe' do
-      expect {
+      expect do
         delete user_recipe_path(@user, @recipe)
-      }.to change(Recipe, :count).by(-1)
+      end.to change(Recipe, :count).by(-1)
     end
-  
+
     it 'redirects to the user recipes page' do
       delete user_recipe_path(@user, @recipe)
       expect(response).to redirect_to(user_recipes_path(@user))
     end
-  end  
+  end
 end

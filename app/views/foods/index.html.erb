@@ -10,14 +10,14 @@
         <th><%= 'Actions' %></th>
       </tr>
     </thead>
-    <tr>
     <% @foods.each do |food| %>
-      <td><%= food.name%></td>
-      <td><%= food.measurement_unit%></td>
-      <td><%= food.price%></td>
-      <td><%= food.quantity%></td>
-      <td><%= button_to 'Delete', user_food_path(@user, food), method: :delete, class: "btn btn-outline-danger border-0" %></td>
-    </tr>
+      <tr id="<%= food.id %>">
+        <td><%= food.name%></td>
+        <td><%= food.measurement_unit%></td>
+        <td><%= food.price%></td>
+        <td><%= food.quantity%></td>
+        <td><%= button_to 'Delete', user_food_path(@user, food), method: :delete, class: "btn btn-outline-danger border-0" %></td>
+      </tr>
     <%end%>
   </table>
 </div>

@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'users/index', type: :view do
   before(:example) do
-    @user1 = User.create(name: "Gordon Ramsay", email: "chef0@masterchef.com", password: "123456", confirmed_at: Time.now)
-    @user2 = User.create(name: "Cook", email: "chef102@masterchef.com", password: "123456", confirmed_at: Time.now)
-    @users = [@user1, @user2] 
+    @user1 = User.create(name: 'Gordon Ramsay', email: 'chef0@masterchef.com', password: '123456',
+                         confirmed_at: Time.now)
+    @user2 = User.create(name: 'Cook', email: 'chef102@masterchef.com', password: '123456', confirmed_at: Time.now)
+    @users = [@user1, @user2]
     # Render the view
     render
   end
