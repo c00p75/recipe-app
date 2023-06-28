@@ -3,7 +3,7 @@
     <%@public_recipes.each do |recipe| %>
         <section class="d-flex flex-row align-items-center border border-5 border-dark p-3 mb-3 fw-bolder fs-4">
             <div class="p-3 me-5">
-                <p class="fs-2"><%= link_to recipe.name, user_recipe_path(current_user, recipe) %></p>
+                <p class="fs-2"><%= link_to recipe.name, user_recipe_path(current_user, recipe), class: 'text-dark' %></p>
                 <p>By <%= recipe.user.name %></p>
             </div>
             <div class="p-2 ms-5">
