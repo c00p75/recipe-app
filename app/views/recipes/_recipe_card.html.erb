@@ -11,6 +11,10 @@
     </ul>
   <%end%>
 
+  <% if !recipe.public %>
+    <span class="btn btn-danger private">Private</span>
+  <%end%>
+
   <%= link_to user_recipe_path(recipe.user, recipe), class: "flex-center" do %>
     <div id="<%= dom_id recipe %>" class="recipe flex-center pattern">
       <div class="flex-center">

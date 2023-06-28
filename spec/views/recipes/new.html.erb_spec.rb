@@ -1,32 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe 'recipes/new', type: :view do
-  before(:each) do
-    assign(:recipe, Recipe.new(
-                      name: 'MyString',
-                      preparation_time: '',
-                      cooking_time: '',
-                      description: 'MyText',
-                      public: false,
-                      user: nil
-                    ))
+  before(:example) do
+    @user = User.create(name: "Cook", email: "cook007@masterchef.com", password: "123456", confirmed_at: Time.now)
+    sign_in @user
+
+    assign(:recipe, Recipe.new) # Assign a new recipe object to the view
+    render # Render the view
   end
 
-  it 'renders new recipe form' do
-    render
+  it 'displays the recipe form' do
+    expect(rendered).to have_field('Name')
+    expect(rendered).to have_field('Preperation Time')
+    expect(rendered).to have_field('Cooking Time')
+    expect(rendered).to have_field('Description')
+    expect(rendered).to have_field('recipe_public')
+    expect(rendered).to have_button('Create Recipe')
+  end
 
-    assert_select 'form[action=?][method=?]', recipes_path, 'post' do
-      assert_select 'input[name=?]', 'recipe[name]'
+  it 'displays validation errors' do
+    @recipe = Recipe.new # Create a recipe with errors
+    @recipe.errors.add(:name, 'cannot be blank')
+    @recipe.errors.add(:description, 'is too short')
 
-      assert_select 'input[name=?]', 'recipe[preparation_time]'
+    assign(:recipe, @recipe) # Assign the recipe with errors to the view
+    render # Render the view
 
-      assert_select 'input[name=?]', 'recipe[cooking_time]'
-
-      assert_select 'textarea[name=?]', 'recipe[description]'
-
-      assert_select 'input[name=?]', 'recipe[public]'
-
-      assert_select 'input[name=?]', 'recipe[user_id]'
-    end
+    expect(rendered).to have_content('Name cannot be blank')
+    expect(rendered).to have_content('Description is too short')
   end
 end
