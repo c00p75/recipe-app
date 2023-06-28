@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="flex-center-col recipes-container">
+  <span> Welcome, <%=current_user.name%>.</span>
+
   <h1 class=text-center>Users</h1>
 
   <div class="container">
@@ -9,5 +11,5 @@
         <%= render user %>
       <% end %>
     </div>
-</div>
+  </div>
 </div>

@@ -5,7 +5,7 @@
   <%= render "form", recipe: @recipe %>
 
   <div class="back flex-center mt-4">
-    <%= link_to "Back to recipes", user_recipes_path %>
+    <%= link_to "Back to recipes", user_recipes_path(@user) %>
   </div>
 </div>
 

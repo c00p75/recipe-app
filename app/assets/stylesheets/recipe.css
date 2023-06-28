@@ -161,3 +161,12 @@ a {
   width: 100% !important;
   height: 100%;
 }
+
+.private {
+  z-index: 1;
+  position: absolute;
+  border-radius: 0 !important;
+  top: 0;
+  left: 0;
+  cursor: auto;
+}

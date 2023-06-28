@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it 'is expected to have many foods' do
+      should respond_to(:foods)
+    end
+
+    it 'is expected to have many recipes' do
+      should respond_to(:recipes)
+    end
+  end
 end
