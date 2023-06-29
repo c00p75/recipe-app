@@ -4,7 +4,10 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><h5 class="card-title text-center fw-bold"><%= user.name %></h5></li>
         <li class="list-group-item"><%= link_to "View Foods", user_foods_path(user) %></li>
-        <li class="list-group-item"><%= link_to "View Recipes", user_recipes_path(user) %></li>
+        <% if user === current_user %>
+          <li class="list-group-item"><%= link_to "View All Recipes", user_recipes_path(user) %></li>
+        <%end%>
+        <li class="list-group-item"><%= link_to "View Public Recipes", user_public_recipes_path(user) %></li>
       </ul>
     </div>
   </div>

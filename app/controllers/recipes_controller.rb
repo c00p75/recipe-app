@@ -8,12 +8,28 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods.where(recipe: @recipe)
+  end
 
   # GET /recipes/new
   def new
     @user = current_user
     @recipe = Recipe.new
+  end
+
+  # Post /recipes/patch
+  def update
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      flash[:notice] = 'Recipe was successfully updated.'
+    else
+      flash[:alert] = 'Failed to update recipe.'
+    end
+    render :show
   end
 
   # POST /recipes or /recipes.json
@@ -32,6 +48,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @user = User.find(params[:user_id])
+    @recipe.recipe_foods.destroy_all
     @recipe.destroy
 
     respond_to do |format|
