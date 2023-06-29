@@ -8,12 +8,27 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+  end
 
   # GET /recipes/new
   def new
     @user = current_user
     @recipe = Recipe.new
+  end
+
+  # Post /recipes/patch
+  def update
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      flash[:notice] = 'Recipe was successfully updated.'
+    else
+      flash[:alert] = 'Failed to update recipe.'
+    end
+    render :show
   end
 
   # POST /recipes or /recipes.json
