@@ -16,3 +16,8 @@
 .width {
   width: 70vw;
 }
+
+.p-recipe:hover {
+  background-color: lightblue;
+  transform: scale(1.01);
+}

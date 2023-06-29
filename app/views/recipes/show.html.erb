@@ -58,7 +58,7 @@
           <tr>
               <td><%= ingredient.food.name %></td>
               <td><%= ingredient.quantity%> <%= ingredient.food.measurement_unit %></td>
-              <td>$ <%= ingredient.food.price %></td>
+              <td>$ <%= ingredient.food.price * ingredient.quantity %></td>
               <td class="d-flex gap-4">
               <% if can? :update, @recipe%>
                 <%= link_to "Modify", edit_user_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), class: 'modify-btn' %>
