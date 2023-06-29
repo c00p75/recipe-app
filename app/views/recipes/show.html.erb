@@ -5,7 +5,8 @@
   <div class="row">
     <div class="col">
       <div>Preperation Time: <%= @recipe.preparation_time %></div>
-      <div class="my-3">Cooking time: <%= @recipe.cooking_time %></div>
+      <br>
+      <div>Cooking time: <%= @recipe.cooking_time %></div>
     </div>
 
     <div class="col">
@@ -22,9 +23,15 @@
     </div>
   </div>
 
+  <br>
+  <br>
+
   <div class="row">
     <%= @recipe.description %>
   </div>
+
+  <br>
+  <br>
 
   <div class="row">
     <div class="col">
@@ -32,13 +39,42 @@
     </div>
 
     <div class="col">
-      <%= link_to 'Add Ingredients', new_user_recipe_food(@user), method: :post, class: "btn btn-outline-secondary" %>
+      <%= link_to 'Add Ingredients', new_user_recipe_recipe_food_path(current_user, @recipe), class: "btn btn-outline-secondary" %>
     </div>
   </div>
 
+  <br>
+  <br>
+
   <div class="row">
-  
+    <table class="table table-striped container">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Value</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+        <tbody>
+        <% @recipe_foods.each do |ingredient|%>
+          <tr>
+              <td><%= ingredient.food.name %></td>
+              <td><%= ingredient.quantity%> <%= ingredient.food.measurement_unit %></td>
+              <td>$ <%= ingredient.food.price %></td>
+              <td class="d-flex gap-2 justify-content-center">
+              <% if can? :update, @recipe%>
+                <%= link_to "Modify", edit_user_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), class: 'modify-btn' %>
+                <%= button_to "Remove", user_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), method: :delete, class: 'delete-btn'%>
+              <%else%>
+                <p>Actions Not allowed</p>
+              <%end%>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>  
 </div>
 
-<%= link_to "Back to recipes", user_recipes_path %>
+<%= link_to "Back to recipes", user_recipes_path, class: "position-absolute top-0 end-0 m-2" %>

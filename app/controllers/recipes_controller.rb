@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
   def show
     @user = current_user
     @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods.where(recipe: @recipe)
   end
 
   # GET /recipes/new
@@ -47,6 +48,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @user = User.find(params[:user_id])
+    @recipe.recipe_foods.destroy_all
     @recipe.destroy
 
     respond_to do |format|
