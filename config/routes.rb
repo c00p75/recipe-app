@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  get 'shopping_list', to: 'shopping_list#index'
+  root 'public_recipes#index'
   
   devise_for :users
   
