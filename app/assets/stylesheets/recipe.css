@@ -170,3 +170,11 @@ a {
   left: 0;
   cursor: auto;
 }
+
+.recipe-food-table tr {
+  display: flex;
+}
+
+.recipe-food-table tr th {
+  flex: 1;
+}

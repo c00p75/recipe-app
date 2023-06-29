@@ -31,6 +31,11 @@ class RecipeFoodsController < ApplicationController
 
   # PATCH/PUT /recipe_foods/1 or /recipe_foods/1.json
   def update
+    @recipe_food = RecipeFood.find(params[:id])
+    puts "\n\n\n\n\n\n\n Editing.........\n"
+    puts @recipe_food
+    puts "\n\n\n\n\n\n\n"
+
     if @recipe_food.update(recipe_food_params)
       redirect_to user_recipe_path(current_user, @recipe_food.recipe_id), notice: 'Recipe food was successfully updated.'
     else
