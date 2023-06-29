@@ -6,12 +6,14 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe_food = RecipeFood.new
     @foods = Food.where(user: current_user)
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   # GET /recipe_foods/1/edit
   def edit
     @recipe_food = RecipeFood.find(params[:id])
     @foods = Food.where(user: current_user)
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   # POST /recipe_foods or /recipe_foods.json
@@ -30,7 +32,7 @@ class RecipeFoodsController < ApplicationController
   # PATCH/PUT /recipe_foods/1 or /recipe_foods/1.json
   def update
     if @recipe_food.update(recipe_food_params)
-      redirect_to recipe_url(params[:recipe_id]), notice: 'Recipe food was successfully updated.'
+      redirect_to user_recipe_path(current_user, @recipe_food.recipe_id), notice: 'Recipe food was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,7 +41,7 @@ class RecipeFoodsController < ApplicationController
   # DELETE /recipe_foods/1 or /recipe_foods/1.json
   def destroy
     @recipe_food.destroy
-    redirect_to recipe_url(params[:recipe_id]), notice: 'Ingredient was successfully destroyed.'
+    redirect_to user_recipe_path(current_user, @recipe_food.recipe_id), notice: 'Ingredient was successfully destroyed.'
   end
 
   private

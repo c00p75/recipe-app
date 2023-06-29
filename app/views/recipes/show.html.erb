@@ -34,11 +34,8 @@
   <br>
 
   <div class="row">
-    <div class="col">
+    <div class="d-flex justify-content-between">
       <button type="button" class="btn btn-outline-secondary">Generate Shopping List</button>
-    </div>
-
-    <div class="col">
       <%= link_to 'Add Ingredients', new_user_recipe_recipe_food_path(current_user, @recipe), class: "btn btn-outline-secondary" %>
     </div>
   </div>
