@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index] do
     resources :foods
-    resources :public_recipes
     resources :recipes do
       resources :recipe_foods
     end
