@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe '/users', type: :request do
-  include Devise::Test::IntegrationHelpers
   before(:all) do
     @user = User.create(name: 'Cook', email: 'chef@masterchef.com', password: '123456', confirmed_at: Time.now)
   end

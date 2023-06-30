@@ -6,12 +6,12 @@ RSpec.describe Recipe, type: :model do
     @recipe = Recipe.create(user: @user, name: 'recipe 1', description: 'description', public: true)
   end
 
-  it 'should name be present' do
+  it 'name should be present' do
     @recipe.name = nil
     expect(@recipe).to_not be_valid
   end
 
-  it 'should price be present' do
+  it 'price should be present' do
     @recipe.description = nil
     expect(@recipe).to_not be_valid
   end
