@@ -98,11 +98,7 @@ a {
 }
 
 .recipe-form-container {
-  position: absolute;
   width: 600px;
-  top: 0;
-  left: 0;
-  right: 0;
   margin: 1em auto;
   background-color: mediumslateblue;
   border-radius: 5px;

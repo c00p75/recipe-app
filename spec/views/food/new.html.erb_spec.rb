@@ -1,8 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'foods/new', type: :view do
   before(:each) do
-    User.last.foods.destroy_all
-    User.last.destroy
     @user = User.create(name: 'Cook', email: 'cheffu@masterchef.com', password: '123456', confirmed_at: Time.now)
     sign_in @user
 
