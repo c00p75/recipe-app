@@ -29,7 +29,6 @@ a {
 }
 
 .recipes-container {
-  position: absolute;
   top: 2em;
   left: 0;
   right: 0;
@@ -92,13 +91,6 @@ a {
   top: 0.25em;
   left: 120%;
   width: max-content;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  background: yellowgreen;
-  color: white;
-  font-weight: 500;
-  box-shadow: none;
-  border-radius: 5px;
 }
 
 .add-recipe:hover {
