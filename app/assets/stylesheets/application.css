@@ -14,5 +14,10 @@
  *= require_self
  */
 .width {
-  width: 60vw;
+  width: 70vw;
+}
+
+.p-recipe:hover {
+  background-color: lightblue;
+  transform: scale(1.01);
 }

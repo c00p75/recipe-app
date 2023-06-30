@@ -1,0 +1,29 @@
+<div class='container width'>
+  <h1 class="text-center fs-1 fw-bold fst-italic mb-5">Shopping List</h1>
+  <div class='d-flex flex-row justify-content-between mb-5'>
+    <span class="h4 fw-bold">Amount of food items to buy: <%= @shopping_list.length%></span>
+    <span class="h4 fw-bold">Total value of food needed: $<%= @total_price%></span>
+  </div>
+  <table class="table table-striped table-bordered" style="width: 70%; margin: auto">
+    <thead class='table-dark'>
+      <tr>
+        <th><%= 'Food' %></th>
+        <th><%= 'Quantity' %></th>
+        <th><%= 'Price' %></th>
+      </tr>
+    </thead>
+    <% @shopping_list.each do |item| %>
+      <tr>
+        <td><%= item[:food][:name]%></td>
+        <td><%= item[:quantity]%> <%= item[:food][:measurement_unit]%></td>
+        <td>$<%= item[:food][:price] * item[:quantity]%></td>
+      </tr>
+    <%end%>
+    <%if @shopping_list.empty?%>
+        <tr>
+            <td colspan="3" class="text-center">No food items to buy</td>
+        </tr>
+    <%end%>
+  </table> 
+</div>
+ 
