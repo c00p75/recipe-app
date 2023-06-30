@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'shopping_list/index.html.erb', type: :view do
   describe 'The content of index page' do
+    RecipeFood.destroy_all
+    Food.destroy_all
+    Recipe.destroy_all
+    User.destroy_all
     before do
       @shopping_list = [{ food: { name: 'pasta', measurement_unit: 'grams', price: 40, quantity: 3, user: User.first },
                           quantity: 4 }]

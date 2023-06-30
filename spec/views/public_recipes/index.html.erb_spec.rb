@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'public_recipes/index.html.erb', type: :view do
   describe 'The content of index page' do
+    RecipeFood.destroy_all
+    Food.destroy_all
+    Recipe.destroy_all
+    User.destroy_all
     before do
       sign_in User.first
       @recipe = Recipe.create(name: 'Pasta', description: 'Pasta with tomato sauce', user: User.first, public: true)

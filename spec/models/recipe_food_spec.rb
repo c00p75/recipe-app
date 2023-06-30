@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
+  RecipeFood.destroy_all
+  Food.destroy_all
+  Recipe.destroy_all
+  User.destroy_all
   before(:all) do
     @user = User.create(name: 'Cook', email: 'cooksmith@masterchef.com', password: '123456', confirmed_at: Time.now)
     @recipe = Recipe.create(user_id: @user, name: 'recipe 1', description: 'description', public: true)

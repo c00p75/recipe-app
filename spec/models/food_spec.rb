@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Food, type: :model do
+  RecipeFood.destroy_all
+  Food.destroy_all
+  Recipe.destroy_all
+  User.destroy_all
   before(:all) do
     @food = Food.create(name: 'pasta', measurement_unit: 'grams', price: 1.99, quantity: 2)
   end

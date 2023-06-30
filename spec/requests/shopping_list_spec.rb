@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'ShoppingLists', type: :request do
+  RecipeFood.destroy_all
+  Food.destroy_all
+  Recipe.destroy_all
+  User.destroy_all
   describe 'GET /index' do
     before do
       sign_in User.first
