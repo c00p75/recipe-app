@@ -54,8 +54,8 @@ a {
 }
 
 .recipe div:first-child {
-  background-color: mediumslateblue;
-  color: white;
+  background-color: gainsboro;
+  color: black;
   height: 100%;
   padding: 0 2em;
   flex: 1;
@@ -64,7 +64,7 @@ a {
 .desc {
   color: black !important;
   width: 400px;
-  flex: 2;
+  flex: 1;
   margin-left: 7em;
   padding: 0 1em;
   display: -webkit-box !important;

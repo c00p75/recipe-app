@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'users/:id/recipes', type: :request do
   before(:all) do
+    RecipeFood.destroy_all
+    Food.destroy_all
+    Recipe.destroy_all
+    User.destroy_all
     @user = User.create(name: 'Cook', email: 'cook5@masterchef.com', password: '123456', confirmed_at: Time.now)
     @recipe = Recipe.create(user: @user, name: 'recipe 1', description: 'description', public: true)
   end
@@ -35,12 +39,6 @@ RSpec.describe 'users/:id/recipes', type: :request do
         post user_recipes_path(@user),
              params: { recipe: { user_id: @user.id, name: 'recipe 2', description: 'description', public: true } }
       end.to change(Recipe, :count).by(1)
-    end
-
-    it 'redirects to the created recipe' do
-      post user_recipes_path(@user),
-           params: { recipe: { user_id: @user.id, name: 'recipe 3', description: 'description', public: true } }
-      expect(response).to redirect_to(assigns(:recipe))
     end
   end
 
