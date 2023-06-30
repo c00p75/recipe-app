@@ -1,5 +1,5 @@
 <div id="<%= dom_id recipe_food %>">
-  <%= form_with model: recipe_food, url: user_recipe_recipe_foods_path do |form| %>
+  <%= form_with model: recipe_food, url: user_recipe_recipe_foods_path(user_id: current_user.id, recipe_id: @recipe.id) do |form| %>
     <p>Food name</p>
     <%= form.select :food_id, @foods.map { |food| [food.name, food.id] }, {}, { class:'form-select'} %>
     <br>

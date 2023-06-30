@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<div class="container recipes-container" style="max-width: 700px">
-  <h1 class="text-center"><%=@recipe.name %></h1>
+<div class="container recipes-container" style="max-width: 600px">
+  <h1 class="text-center mb-4"><%=@recipe.name %></h1>
   <div class="row">
     <div class="col">
       <div>Preperation Time: <%= @recipe.preparation_time %></div>
@@ -9,9 +9,9 @@
       <div>Cooking time: <%= @recipe.cooking_time %></div>
     </div>
 
-    <div class="col">
+    <div class="col d-flex justify-content-end">
       <div class="form-check form-switch">
-        <%= form_with(model: @recipe, url: user_recipe_path(@user, @recipe), method: :patch) do |form| %>
+        <%= form_with(model: @recipe, url: user_recipe_path(user_id: @user.id, id: @recipe.id), method: :patch) do |form| %>
           <div>
             <%= form.check_box :public, class: "form-check-input", checked: @recipe.public, onchange: "this.form.submit();" %>
             <%= form.label :public, class:"form-check-label" %>
@@ -47,13 +47,13 @@
     <table class="table table-striped container">
       <thead>
         <tr>
-          <th scope="col">Food</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Value</th>
-          <th scope="col">Actions</th>
+          <th scope="col" class="col-3">Food</th>
+          <th scope="col" class="col-3">Quantity</th>
+          <th scope="col" class="col-3">Value</th>
+          <th scope="col" class="col-3">Actions</th>
         </tr>
       </thead>
-        <tbody>
+      <tbody>
         <% @recipe_foods.each do |ingredient|%>
           <tr>
               <td><%= ingredient.food.name %></td>
@@ -61,8 +61,8 @@
               <td>$ <%= ingredient.food.price * ingredient.quantity %></td>
               <td class="d-flex gap-4">
               <% if can? :update, @recipe%>
-                <%= link_to "Modify", edit_user_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), class: 'modify-btn' %>
-                <%= button_to "Remove", user_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), method: :delete, class: 'delete-btn'%>
+                <%= link_to "Modify", edit_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id, id: ingredient.id), class: 'modify-btn' %>
+                <%= button_to "Remove", user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id, id: ingredient.id), method: :delete, class: 'delete-btn'%>
               <%else%>
                 <p>Actions Not allowed</p>
               <%end%>
@@ -73,5 +73,3 @@
     </table>
   </div>  
 </div>
-
-<%= link_to "Back to recipes", user_recipes_path, class: "position-absolute top-0 end-0 m-2" %>

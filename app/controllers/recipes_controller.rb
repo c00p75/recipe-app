@@ -24,12 +24,7 @@ class RecipesController < ApplicationController
   def update
     @user = current_user
     @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
-      flash[:notice] = 'Recipe was successfully updated.'
-    else
-      flash[:alert] = 'Failed to update recipe.'
-    end
-    render :show
+    @recipe.update(recipe_params)
   end
 
   # POST /recipes or /recipes.json
@@ -38,7 +33,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to user_recipes_path(current_user), notice: 'Recipe was successfully created.' }
+        format.html { redirect_to user_recipe_path(@recipe.user, @recipe), notice: 'Recipe was successfully created.' }
       else
         render :new, status: :unprocessable_entity
       end

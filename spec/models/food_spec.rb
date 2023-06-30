@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   before(:all) do
-    @food = Food.create(name: 'pasta', measurement_unit: 'grams', price: '$20', quantity: 2)
+    @food = Food.create(name: 'pasta', measurement_unit: 'grams', price: 1.99, quantity: 2)
   end
 
   it 'should name be present' do

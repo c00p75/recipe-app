@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   before(:each) do
     @user = User.first
-    @food = Food.create(name: 'pasta', measurement_unit: 'grams', price: '$20', quantity: 2, user: @user)
+    @food = Food.create(name: 'pasta', measurement_unit: 'grams', price: 20, quantity: 2, user: @user)
     sign_in @user
   end
 
