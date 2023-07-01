@@ -1,0 +1,75 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container recipes-container" style="max-width: 600px">
+  <h1 class="text-center mb-4"><%=@recipe.name %></h1>
+  <div class="row">
+    <div class="col">
+      <div>Preperation Time: <%= @recipe.preparation_time %></div>
+      <br>
+      <div>Cooking time: <%= @recipe.cooking_time %></div>
+    </div>
+
+    <div class="col d-flex justify-content-end">
+      <div class="form-check form-switch">
+        <%= form_with(model: @recipe, url: user_recipe_path(user_id: @user.id, id: @recipe.id), method: :patch) do |form| %>
+          <div>
+            <%= form.check_box :public, class: "form-check-input", checked: @recipe.public, onchange: "this.form.submit();" %>
+            <%= form.label :public, class:"form-check-label" %>
+          </div>
+
+          <%= form.hidden_field :user_id, value: current_user.id %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <%= @recipe.description %>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Generate Shopping List', shopping_list_path, class: "btn btn-outline-secondary" %>
+      <%= link_to 'Add Ingredients', new_user_recipe_recipe_food_path(current_user, @recipe), class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+    <table class="table table-striped container">
+      <thead>
+        <tr>
+          <th scope="col" class="col-3">Food</th>
+          <th scope="col" class="col-3">Quantity</th>
+          <th scope="col" class="col-3">Value</th>
+          <th scope="col" class="col-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recipe_foods.includes(:food).each do |ingredient|%>
+          <tr>
+              <td><%= ingredient.food.name %></td>
+              <td><%= ingredient.quantity%> <%= ingredient.food.measurement_unit %></td>
+              <td>$ <%= ingredient.food.price * ingredient.quantity %></td>
+              <td class="d-flex gap-4">
+              <% if can? :update, @recipe%>
+                <%= link_to "Modify", edit_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id, id: ingredient.id), class: 'modify-btn' %>
+                <%= button_to "Remove", user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id, id: ingredient.id), method: :delete, class: 'delete-btn'%>
+              <%else%>
+                <p>Actions Not allowed</p>
+              <%end%>
+              </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>  
+</div>

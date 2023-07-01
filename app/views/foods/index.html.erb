@@ -1,0 +1,28 @@
+<div class='container'>
+  <div class='d-flex justify-content-end mb-3'><%= link_to 'Add Food', new_user_food_path(@user), method: :post, class: "btn btn-primary" %></div>
+  <% if @foods.empty? %>
+     <h2>No Foods are Added</h2>
+  <%else%>
+    <table class="table table-striped table-bordered">
+    <thead class='table-dark'>
+      <tr>
+        <th><%= 'Food' %></th>
+        <th><%= 'Measurement unit'%></th>
+        <th><%= 'Unit price' %></th>
+        <th><%= 'Quantity' %></th>
+        <th><%= 'Actions' %></th>
+      </tr>
+    </thead>
+    <% @foods.each do |food| %>
+      <tr id="<%= food.id %>">
+        <td><%= food.name%></td>
+        <td><%= food.measurement_unit%></td>
+        <td>$<%= food.price%></td>
+        <td><%= food.quantity%></td>
+        <td><%= button_to 'Delete', user_food_path(@user, food), method: :delete, class: "btn btn-outline-danger border-0" %></td>
+      </tr>
+    <%end%>
+  </table>
+  <%end%> 
+</div>
+ 

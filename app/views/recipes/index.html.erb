@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="flex-center-col recipes-container">
+  <div style="position: relative;">
+    <h1>Recipes</h1>
+    <% if @user === current_user %>
+      <%= link_to "Add recipe", new_user_recipe_path(user_id: @user.id), class: "add-recipe btn btn-success" %>
+    <%end%>
+  </div>
+
+  <div id="recipes">
+    <% @recipes.each do |recipe| %>
+      <%= render partial: 'recipe_card', locals: { recipe: } %>
+    <% end %>
+  </div>
+  <% if @recipes.empty? %>
+     <h2>No Recipes Added</h2>
+    <%end%>
+</div>

@@ -1,0 +1,42 @@
+<%= form_with(model: @recipe, url: user_recipes_path(@user), html: {class: 'form registeration-form flex-center recipe-form'}) do |form| %>
+  <% if recipe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% @recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <%= form.text_field :name, placeholder: 'Name' %>
+  </div>
+
+  <div class="row">
+    <div class="col ps-0">
+      <%= form.text_field :preparation_time, placeholder: 'Preperation Time' %>
+    </div>
+
+    <div class="col pe-0">
+      <%= form.text_field :cooking_time, placeholder: 'Cooking Time' %>
+    </div>
+  </div>
+
+  <div style="width: 100%">
+    <%= form.text_area :description, rows: 6, placeholder: 'Description' %>
+  </div>
+
+  <div class="flex">
+    <%= form.label :public, style: "display: block; margin-right: 1em;" %>
+    <%= form.check_box :public, style: "font-size: 2em; width: 0.5em;" %>
+  </div>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

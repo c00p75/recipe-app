@@ -1,0 +1,17 @@
+<div class='container width'>
+    <h1 class="text-center fs-1 fw-bold fst-italic">Public Recipes</h1>
+    <%@public_recipes.includes(:user).each do |recipe| %>
+        <%= link_to user_recipe_path(current_user, recipe), class: 'text-dark' do %>
+            <section class="d-flex flex-row align-items-center border border-5 border-dark p-3 mb-3 fw-bolder fs-4 p-recipe">
+                <div class="p-3 me-5">
+                    <p class="fs-2"><%= recipe.name %></p>
+                    <p>By <%= recipe.user.name %></p>
+                </div>
+                <div class="p-2 ms-5">
+                    <p>Total food items: <%= recipe.foods.count %></p>
+                    <p>Total price: $<%= recipe.foods.sum(:price)%></p>
+                </div>
+            </section>
+        <%end%>
+    <%end%>
+</div>
